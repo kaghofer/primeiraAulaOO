@@ -69,6 +69,6 @@ public class PrimeiraTela {
     }
     
     public static void main(String[] args) {
-        PrimeiraTela primeiraTela = new PrimeiraTela();
+        new PrimeiraTela();
     }
 }
