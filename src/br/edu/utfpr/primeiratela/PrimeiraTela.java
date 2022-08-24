@@ -22,45 +22,31 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.text.MaskFormatter;
 
-public class PrimeiraTela extends JFrame{
+public class PrimeiraTela {
 
     private JTextField txtNome;
     private JTextArea taDados;
-    private final JButton btnSalvar;
-    private final JButton btnCancelar;
-    private final JScrollPane apDados;
-    private JLabel lbNome;
-    private JCheckBox cbJava;
-    private JCheckBox cbDelphi;
-    private JLabel lbGenero;
-    private JRadioButton rbMasc;
-    private JRadioButton rbFem;
-    private ButtonGroup bgGenero;
-    private JLabel lbLivros;
-    private JLabel lbCpf;
-    private JFormattedTextField ftCPF;
-    
-    
+
     public PrimeiraTela() {
         JFrame frame = new JFrame("Primeira Tela");
 
-        lbNome = new JLabel("Nome");
+        JLabel lbNome = new JLabel("Nome");
         txtNome = new JTextField();
         txtNome.setColumns(10);
-        lbGenero = new JLabel("Gênero");
+        JLabel lbGenero = new JLabel("Gênero");
 
-        rbMasc = new JRadioButton("Masculino");
-        rbFem = new JRadioButton("Feminino");
+        JRadioButton rbMasc = new JRadioButton("Masculino");
+        JRadioButton rbFem = new JRadioButton("Feminino");
 
-        bgGenero = new ButtonGroup();
+        ButtonGroup bgGenero = new ButtonGroup();
         bgGenero.add(rbFem);
         bgGenero.add(rbMasc);
 
-        lbLivros = new JLabel("Livros");
-        cbJava = new JCheckBox("Java");
-        cbDelphi = new JCheckBox("Delphi");
-        lbCpf = new JLabel("CPF");
-        ftCPF = null;
+        JLabel lbLivros = new JLabel("Livros");
+        JCheckBox cbJava = new JCheckBox("Java");
+        JCheckBox cbDelphi = new JCheckBox("Delphi");
+        JLabel lbCpf = new JLabel("CPF");
+        JFormattedTextField ftCPF = null;
         try {
             MaskFormatter mf = new MaskFormatter("###.###.###-##");
             ftCPF = new JFormattedTextField(mf);
@@ -85,10 +71,10 @@ public class PrimeiraTela extends JFrame{
         pnDados.add(lbCpf);
         pnDados.add(ftCPF);
 
-         btnSalvar = new JButton("Salvar");
-         btnCancelar = new JButton("Cancelar");
+        JButton btnSalvar = new JButton("Salvar");
+        JButton btnCancelar = new JButton("Cancelar");
         taDados = new JTextArea();
-        apDados = new JScrollPane(taDados);
+        JScrollPane apDados = new JScrollPane(taDados);
 
         JPanel pnBotoes = new JPanel();
         pnBotoes.add(btnSalvar);
@@ -102,50 +88,15 @@ public class PrimeiraTela extends JFrame{
         frame.add(pnBotoes, BorderLayout.SOUTH);
 
         btnSalvar.addActionListener(e -> {
-            
-            taDados.setText(getDados());
+
+            taDados.setText(txtNome.getText());
         });
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 500);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-    
-    }
-    
-     private String getGenero(){
-        String genero = null;
-        if(rbMasc.isSelected())
-        {
-            genero = rbMasc.getActionCommand();
-        }else if(rbFem.isSelected())
-        {
-            genero = rbFem.getActionCommand();
-        }
-        return genero;
-    }
-    
-    public String getLivros()
-    {
-        String livros = "";
-        if(cbJava.isSelected())
-        {
-            livros = cbJava.getActionCommand() + "\n";
-        }if(cbDelphi.isSelected())
-        {
-            livros+=cbDelphi.getActionCommand() + "\n";
-        }
-        return livros;
-    }
 
-    private String getDados()
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.append(txtNome.getText()).append("\n")
-                .append(getGenero()).append("\n")
-                .append(getLivros())
-                .append(ftCPF.getText());
-        return sb.toString();        
     }
 
     public static void main(String[] args) {
