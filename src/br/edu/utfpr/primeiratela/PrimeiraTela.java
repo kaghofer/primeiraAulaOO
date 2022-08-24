@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.text.MaskFormatter;
 
-public class PrimeiraTela {
+public class PrimeiraTela extends JFrame{
 
     private JTextField txtNome;
     private JTextArea taDados;
