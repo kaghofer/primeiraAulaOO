@@ -94,8 +94,7 @@ public class PrimeiraTela extends JFrame{
         pnBotoes.add(btnSalvar);
         pnBotoes.add(btnCancelar);
 
-        pnBotoes.setBackground(Color.red);
-        pnDados.setBackground(Color.PINK);
+        pnBotoes.setBackground(Color.gray);
 
         frame.setLayout(new BorderLayout(5, 5));
         frame.add(pnDados, BorderLayout.NORTH);
