@@ -90,12 +90,12 @@ public class PrimeiraTela extends JFrame {
         frame.add(pnBotoes, BorderLayout.SOUTH);
 
         btnSalvar.addActionListener(e -> {
-            StringBuilder str = new StringBuilder();
-            str.append(txtNome.getText()).append("\n")
-                    .append(sexo()).append("\n")
-                    .append(livros()).append("\n")
-                    .append(ftCPF.getText());
-            taDados.setText(str.toString());
+//            StringBuilder str = new StringBuilder();
+//            str.append(txtNome.getText()).append("\n")
+//                    .append(sexo()).append("\n")
+//                    .append(livros()).append("\n")
+//                    .append(ftCPF.getText());
+            taDados.setText(getDados());
         });
 
          
