@@ -20,43 +20,34 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.text.MaskFormatter;
 
-public class PrimeiraTela {
+public class PrimeiraTela extends JFrame {
 
     private JTextField txtNome;
     private JTextArea taDados;
-    private final JButton btnSalvar;
-    private final JButton btnCancelar;
-    private final JScrollPane apDados;
-    private JLabel lbNome;
-    private JCheckBox cbJava;
-    private JCheckBox cbDelphi;
-    private JLabel lbGenero;
-    private JRadioButton rbMasc;
-    private JRadioButton rbFem;
-    private ButtonGroup bgGenero;
     private JLabel lbLivros;
-    private JLabel lbCpf;
+    private JCheckBox cbJava, cbDelphi;
+    private JRadioButton rbMasc, rbFem;
     private JFormattedTextField ftCPF;
-    
+
     public PrimeiraTela() {
         JFrame frame = new JFrame("Primeira Tela");
 
-        lbNome = new JLabel("Nome");
+        JLabel lbNome = new JLabel("Nome");
         txtNome = new JTextField();
         txtNome.setColumns(10);
-        lbGenero = new JLabel("Gênero");
+        JLabel lbGenero = new JLabel("Gênero");
 
         rbMasc = new JRadioButton("Masculino");
         rbFem = new JRadioButton("Feminino");
 
-        bgGenero = new ButtonGroup();
+        ButtonGroup bgGenero = new ButtonGroup();
         bgGenero.add(rbFem);
         bgGenero.add(rbMasc);
 
         lbLivros = new JLabel("Livros");
         cbJava = new JCheckBox("Java");
         cbDelphi = new JCheckBox("Delphi");
-        lbCpf = new JLabel("CPF");
+        JLabel lbCpf = new JLabel("CPF");
         ftCPF = null;
         try {
             MaskFormatter mf = new MaskFormatter("###.###.###-##");
@@ -82,16 +73,16 @@ public class PrimeiraTela {
         pnDados.add(lbCpf);
         pnDados.add(ftCPF);
 
-        btnSalvar = new JButton("Salvar");
-        btnCancelar = new JButton("Cancelar");
+        JButton btnSalvar = new JButton("Salvar");
+        JButton btnCancelar = new JButton("Cancelar");
         taDados = new JTextArea();
-        apDados = new JScrollPane(taDados);
+        JScrollPane apDados = new JScrollPane(taDados);
 
         JPanel pnBotoes = new JPanel();
         pnBotoes.add(btnSalvar);
         pnBotoes.add(btnCancelar);
 
-        pnBotoes.setBackground(Color.darkGray);
+        pnBotoes.setBackground(Color.gray);
 
         frame.setLayout(new BorderLayout(5, 5));
         frame.add(pnDados, BorderLayout.NORTH);
@@ -99,11 +90,16 @@ public class PrimeiraTela {
         frame.add(pnBotoes, BorderLayout.SOUTH);
 
         btnSalvar.addActionListener(e -> {
+//            StringBuilder str = new StringBuilder();
+//            str.append(txtNome.getText()).append("\n")
+//                    .append(sexo()).append("\n")
+//                    .append(livros()).append("\n")
+//                    .append(ftCPF.getText());
             taDados.setText(getDados());
         });
-        
-        
 
+         
+        
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 500);
         frame.setLocationRelativeTo(null);
@@ -145,7 +141,6 @@ public class PrimeiraTela {
                 .append(ftCPF.getText());
         return sb.toString();        
     }
-    
     public static void main(String[] args) {
         new PrimeiraTela();
     }
