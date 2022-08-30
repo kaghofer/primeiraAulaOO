@@ -30,7 +30,7 @@ public class PrimeiraTela extends JFrame {
     private JFormattedTextField ftCPF;
 
     public PrimeiraTela() {
-        JFrame frame = new JFrame("Primeira Tela");
+      //  JFrame frame = new JFrame("Primeira Tela");;
 
         JLabel lbNome = new JLabel("Nome");
         txtNome = new JTextField();
@@ -84,20 +84,21 @@ public class PrimeiraTela extends JFrame {
 
         pnBotoes.setBackground(Color.gray);
 
-        frame.setLayout(new BorderLayout(5, 5));
-        frame.add(pnDados, BorderLayout.NORTH);
-        frame.add(apDados, BorderLayout.CENTER);
-        frame.add(pnBotoes, BorderLayout.SOUTH);
+        super.setLayout(new BorderLayout(5, 5));
+        super.add(pnDados, BorderLayout.NORTH);
+        super.add(apDados, BorderLayout.CENTER);
+        super.add(pnBotoes, BorderLayout.SOUTH);
 
         btnSalvar.addActionListener(e -> {
 
-            taDados.setText(getDados());
+            //taDados.setText(getDados());
+            new DlgDados(this, true);
         });
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 500);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        super.setSize(400, 500);
+        super.setLocationRelativeTo(null);
+        super.setVisible(true);
 
     }
 
@@ -122,7 +123,7 @@ public class PrimeiraTela extends JFrame {
         return livros;
     }
 
-    private String getDados() {
+    public String getDados() {
         StringBuilder sb = new StringBuilder();
         sb.append(txtNome.getText()).append("\n")
                 .append(getGenero()).append("\n")
