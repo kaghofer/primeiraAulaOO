@@ -90,57 +90,47 @@ public class PrimeiraTela extends JFrame {
         frame.add(pnBotoes, BorderLayout.SOUTH);
 
         btnSalvar.addActionListener(e -> {
-//            StringBuilder str = new StringBuilder();
-//            str.append(txtNome.getText()).append("\n")
-//                    .append(sexo()).append("\n")
-//                    .append(livros()).append("\n")
-//                    .append(ftCPF.getText());
+
             taDados.setText(getDados());
         });
 
-         
-        
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 500);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
     }
-    
-    private String getGenero(){
+
+    private String getGenero() {
         String genero = null;
-        if(rbMasc.isSelected())
-        {
+        if (rbMasc.isSelected()) {
             genero = rbMasc.getActionCommand();
-        }else if(rbFem.isSelected())
-        {
+        } else if (rbFem.isSelected()) {
             genero = rbFem.getActionCommand();
         }
         return genero;
     }
-    
-    public String getLivros()
-    {
+
+    public String getLivros() {
         String livros = "";
-        if(cbJava.isSelected())
-        {
+        if (cbJava.isSelected()) {
             livros = cbJava.getActionCommand() + "\n";
-        }if(cbDelphi.isSelected())
-        {
-            livros+=cbDelphi.getActionCommand() + "\n";
+        }
+        if (cbDelphi.isSelected()) {
+            livros += cbDelphi.getActionCommand() + "\n";
         }
         return livros;
     }
 
-    private String getDados()
-    {
+    private String getDados() {
         StringBuilder sb = new StringBuilder();
         sb.append(txtNome.getText()).append("\n")
                 .append(getGenero()).append("\n")
                 .append(getLivros())
                 .append(ftCPF.getText());
-        return sb.toString();        
+        return sb.toString();
     }
+
     public static void main(String[] args) {
         new PrimeiraTela();
     }
