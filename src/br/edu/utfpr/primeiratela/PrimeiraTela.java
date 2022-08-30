@@ -20,10 +20,14 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.text.MaskFormatter;
 
-public class PrimeiraTela extends JFrame{
+public class PrimeiraTela extends JFrame {
 
     private JTextField txtNome;
     private JTextArea taDados;
+    private JLabel lbLivros;
+    private JCheckBox cbJava, cbDelphi;
+    private JRadioButton rbMasc, rbFem;
+    private JFormattedTextField ftCPF;
 
     public PrimeiraTela() {
         JFrame frame = new JFrame("Primeira Tela");
@@ -33,18 +37,18 @@ public class PrimeiraTela extends JFrame{
         txtNome.setColumns(10);
         JLabel lbGenero = new JLabel("Gênero");
 
-        JRadioButton rbMasc = new JRadioButton("Masculino");
-        JRadioButton rbFem = new JRadioButton("Feminino");
+        rbMasc = new JRadioButton("Masculino");
+        rbFem = new JRadioButton("Feminino");
 
         ButtonGroup bgGenero = new ButtonGroup();
         bgGenero.add(rbFem);
         bgGenero.add(rbMasc);
 
-        JLabel lbLivros = new JLabel("Livros");
-        JCheckBox cbJava = new JCheckBox("Java");
-        JCheckBox cbDelphi = new JCheckBox("Delphi");
+        lbLivros = new JLabel("Livros");
+        cbJava = new JCheckBox("Java");
+        cbDelphi = new JCheckBox("Delphi");
         JLabel lbCpf = new JLabel("CPF");
-        JFormattedTextField ftCPF = null;
+        ftCPF = null;
         try {
             MaskFormatter mf = new MaskFormatter("###.###.###-##");
             ftCPF = new JFormattedTextField(mf);
@@ -86,17 +90,53 @@ public class PrimeiraTela extends JFrame{
         frame.add(pnBotoes, BorderLayout.SOUTH);
 
         btnSalvar.addActionListener(e -> {
-
-            taDados.setText(txtNome.getText());
+            StringBuilder str = new StringBuilder();
+            str.append(txtNome.getText()).append("\n")
+                    .append(sexo()).append("\n")
+                    .append(livros()).append("\n")
+                    .append(ftCPF.getText());
+            taDados.setText(str.toString());
         });
 
+         
+        
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 500);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
     }
-
+    
+    public String sexo(){
+        String result = null;
+        if(rbMasc.isSelected())
+        {
+            result = rbMasc.getActionCommand();
+        }else if(rbFem.isSelected())
+        {
+            result = rbFem.getActionCommand();
+        }
+        else
+        {
+            result = ""; 
+        }
+                
+        return result;
+    }
+    
+    public String livros()
+    {
+        String result = null;
+        if(cbJava.isSelected())
+        {
+            result = cbJava.getActionCommand();
+        }if(cbDelphi.isSelected())
+        {
+            result += "\n" + cbDelphi.getActionCommand();
+        }
+        
+        return result;
+    }
     public static void main(String[] args) {
         new PrimeiraTela();
     }
