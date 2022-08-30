@@ -107,35 +107,39 @@ public class PrimeiraTela extends JFrame {
 
     }
     
-    public String sexo(){
-        String result = null;
+    private String getGenero(){
+        String genero = null;
         if(rbMasc.isSelected())
         {
-            result = rbMasc.getActionCommand();
+            genero = rbMasc.getActionCommand();
         }else if(rbFem.isSelected())
         {
-            result = rbFem.getActionCommand();
+            genero = rbFem.getActionCommand();
         }
-        else
-        {
-            result = ""; 
-        }
-                
-        return result;
+        return genero;
     }
     
-    public String livros()
+    public String getLivros()
     {
-        String result = null;
+        String livros = "";
         if(cbJava.isSelected())
         {
-            result = cbJava.getActionCommand();
+            livros = cbJava.getActionCommand() + "\n";
         }if(cbDelphi.isSelected())
         {
-            result += "\n" + cbDelphi.getActionCommand();
+            livros+=cbDelphi.getActionCommand() + "\n";
         }
-        
-        return result;
+        return livros;
+    }
+
+    private String getDados()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(txtNome.getText()).append("\n")
+                .append(getGenero()).append("\n")
+                .append(getLivros())
+                .append(ftCPF.getText());
+        return sb.toString();        
     }
     public static void main(String[] args) {
         new PrimeiraTela();
